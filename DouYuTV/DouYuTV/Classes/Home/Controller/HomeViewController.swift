@@ -8,8 +8,20 @@
 
 import UIKit
 
+private let kTitleViewH : CGFloat = 40
+
 class HomeViewController: UIViewController {
 
+    //MARK: - 懒加载属性
+    private lazy var pageTitleView : PageTitleView = {
+        let titleFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH, width: kScreenW, height: kTitleViewH)
+        let titles = ["推荐","游戏","娱乐","趣玩"];
+        let titleView = PageTitleView(frame: titleFrame, titles: titles)
+        titleView.backgroundColor = .purple
+        return titleView
+    }()
+    
+    //MARK: - 系统函数
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +38,9 @@ extension HomeViewController {
     private func setupUI() {
         //1. 设置导航栏
         setupNavigationBar()
+        
+        //MARK: - 添加TitleView
+        self.view.addSubview(pageTitleView)
     }
     
     private func setupNavigationBar() {
@@ -43,26 +58,6 @@ extension HomeViewController {
         let historyItem = UIBarButtonItem(imageName: "image_my_history", highImageName: "Image_my_history_click", size: size)
         let searchItem = UIBarButtonItem(imageName: "btn_search", highImageName: "btn_search_clicked", size: size)
         let qrcodeItem = UIBarButtonItem(imageName: "Image_scan", highImageName: "Image_scan_click", size: size)
-        
-        /*
-        let historyBtn = UIButton()
-        historyBtn.setImage(UIImage(named: "image_my_history"), for: .normal)
-        historyBtn.setImage(UIImage(named: "Image_my_history_click"), for: .highlighted)
-        historyBtn.frame = CGRect(origin: CGPoint.zero, size: size)
-        let historyItem = UIBarButtonItem(customView: historyBtn)
-        
-        let searchBtn = UIButton()
-        searchBtn.setImage(UIImage(named: "btn_search"), for: .normal)
-        searchBtn.setImage(UIImage(named: "btn_search_clicked"), for: .highlighted)
-        searchBtn.frame = CGRect(origin: CGPoint.zero, size: size)
-        let searchItem = UIBarButtonItem(customView: searchBtn)
-        
-        let qrcodeBtn = UIButton()
-        qrcodeBtn.setImage(UIImage(named: "Image_scan"), for: .normal)
-        qrcodeBtn.setImage(UIImage(named: "Image_scan_click"), for: .highlighted)
-        qrcodeBtn.frame = CGRect(origin: CGPoint.zero, size: size)
-        let qrcodeItem = UIBarButtonItem(customView: qrcodeBtn)
-        */
         navigationItem.rightBarButtonItems = [historyItem, searchItem, qrcodeItem]
     }
 }
