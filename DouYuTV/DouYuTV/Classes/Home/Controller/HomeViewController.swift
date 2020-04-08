@@ -17,8 +17,24 @@ class HomeViewController: UIViewController {
         let titleFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH, width: kScreenW, height: kTitleViewH)
         let titles = ["推荐","游戏","娱乐","趣玩"];
         let titleView = PageTitleView(frame: titleFrame, titles: titles)
-        titleView.backgroundColor = .purple
         return titleView
+    }()
+    
+    private lazy var pageContentView : PageContentView = {
+        //确定内容frame
+        let contentY = kStatusBarH + kNavigationBarH + kTitleViewH
+        let contentFrame = CGRect(x: 0, y: contentY, width: kScreenW, height: kScreenH - contentY)
+        
+        //创建子控制器
+        var childVcs = [UIViewController]()
+        for _ in 0..<4 {
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
+            childVcs.append(vc)
+        }
+   
+        let contentView = PageContentView(frame: contentFrame, childVcs: childVcs, parentViewController: self)
+        return contentView
     }()
     
     //MARK: - 系统函数
@@ -36,11 +52,18 @@ class HomeViewController: UIViewController {
 //MARK:- 设置UI界面
 extension HomeViewController {
     private func setupUI() {
+        //不需要调整UIScrollView的内边距
+        automaticallyAdjustsScrollViewInsets = false
+        
         //1. 设置导航栏
         setupNavigationBar()
         
         //MARK: - 添加TitleView
-        self.view.addSubview(pageTitleView)
+        view.addSubview(pageTitleView)
+        
+        //添加contentView
+        view.addSubview(pageContentView)
+        pageContentView.backgroundColor = .purple
     }
     
     private func setupNavigationBar() {
