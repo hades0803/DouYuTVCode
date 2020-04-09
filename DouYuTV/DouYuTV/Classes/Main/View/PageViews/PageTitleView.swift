@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol PageTitleViewDelegate : class {
+    func pageTitleView(titleView : PageTitleView, selectIndex index : Int)
+}
+
 private let kScrollLineH : CGFloat = 2
 
 class PageTitleView: UIView {
 
     //MARK: - 定义属性
+    private var currentIndex : Int = 0
     private var titles : [String]
+    weak var delegate : PageTitleViewDelegate?
     
     //懒加载属性
     private lazy var titleLabels : [UILabel] = [UILabel]()
@@ -86,6 +92,11 @@ extension PageTitleView {
             //将label添加到scrollView上
             scrollView.addSubview(label)
             titleLabels.append(label)
+            
+            //给Label添加手势
+            label.isUserInteractionEnabled = true;
+            let tapGes = UITapGestureRecognizer(target: self, action: #selector(self.titleLabelClick(tapGes:)))
+            label.addGestureRecognizer(tapGes)
         }
     }
     
@@ -105,6 +116,38 @@ extension PageTitleView {
         scrollView.addSubview(scrollLine)
         scrollLine.frame = CGRect(x: firstLabel.frame.origin.x, y: frame.height - kScrollLineH, width: firstLabel.frame.width, height: kScrollLineH)
     }
-    
-    
+}
+
+//监听Label的点击
+extension PageTitleView {
+    @objc private func titleLabelClick(tapGes : UITapGestureRecognizer) {
+        //获取当前label的下标值
+        guard let currentLabel = tapGes.view as? UILabel else { return }
+        
+        //获取之前的label
+        let oldLabel = titleLabels[currentIndex]
+        
+        //切换文字颜色
+        currentLabel.textColor = .orange
+        oldLabel.textColor = .darkGray
+        
+        //保存最新label的下标值
+        currentIndex = currentLabel.tag
+        
+        //滚动条位置发生变化
+        let scrollLineX = CGFloat(currentLabel.tag) * scrollLine.frame.width
+        UIView.animate(withDuration: 0.15) {
+            self.scrollLine.frame.origin.x = scrollLineX
+        }
+        
+        //通知代理
+        delegate?.pageTitleView(titleView: self, selectIndex: currentIndex)
+    }
+}
+
+//暴露的方法
+extension PageTitleView {
+    func setTitleWithProgress(progress : CGFloat, sourceIndex : Int, targetIndex : Int) {
+        
+    }
 }

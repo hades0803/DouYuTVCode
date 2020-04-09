@@ -13,14 +13,15 @@ private let kTitleViewH : CGFloat = 40
 class HomeViewController: UIViewController {
 
     //MARK: - 懒加载属性
-    private lazy var pageTitleView : PageTitleView = {
+    private lazy var pageTitleView : PageTitleView = {[weak self] in
         let titleFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH, width: kScreenW, height: kTitleViewH)
         let titles = ["推荐","游戏","娱乐","趣玩"];
         let titleView = PageTitleView(frame: titleFrame, titles: titles)
+        titleView.delegate = self
         return titleView
     }()
     
-    private lazy var pageContentView : PageContentView = {
+    private lazy var pageContentView : PageContentView = {[weak self] in
         //确定内容frame
         let contentY = kStatusBarH + kNavigationBarH + kTitleViewH
         let contentFrame = CGRect(x: 0, y: contentY, width: kScreenW, height: kScreenH - contentY)
@@ -34,6 +35,7 @@ class HomeViewController: UIViewController {
         }
    
         let contentView = PageContentView(frame: contentFrame, childVcs: childVcs, parentViewController: self)
+        contentView.delegate = self
         return contentView
     }()
     
@@ -82,5 +84,19 @@ extension HomeViewController {
         let searchItem = UIBarButtonItem(imageName: "btn_search", highImageName: "btn_search_clicked", size: size)
         let qrcodeItem = UIBarButtonItem(imageName: "Image_scan", highImageName: "Image_scan_click", size: size)
         navigationItem.rightBarButtonItems = [historyItem, searchItem, qrcodeItem]
+    }
+}
+
+//遵守PageTitleViewDelegate协议
+extension HomeViewController : PageTitleViewDelegate {
+    func pageTitleView(titleView: PageTitleView, selectIndex index: Int) {
+        pageContentView.setCurrentIndex(currentIndex: index)
+    }
+}
+
+//遵守PageContentViewDelegate协议
+extension HomeViewController : PageContentViewDelegate {
+    func pageContentView(contetView: PageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+        pageTitleView.setTitleWithProgress(progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
     }
 }
