@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionNomalCell" customModule="DouYuTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="174"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="270" height="174"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_live_cate_normal" translatesAutoresizingMaskIntoConstraints="NO" id="pVc-wa-GXP">
+                        <rect key="frame" x="0.0" y="150" width="14" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="14" id="85i-K0-mor"/>
+                            <constraint firstAttribute="height" constant="14" id="Ewq-nA-5Ce"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是滑动视图cell的内容标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phj-GY-WQE">
+                        <rect key="frame" x="19" y="150" width="246" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Img_default" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-e3-ol9">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="145"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是主播名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRa-H8-ilz">
+                        <rect key="frame" x="5" y="126" width="68" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIw-WL-FYA">
+                        <rect key="frame" x="198" y="124" width="67" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="6666在线" image="Image_online"/>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="dIw-WL-FYA" firstAttribute="trailing" secondItem="cbX-e3-ol9" secondAttribute="trailing" constant="-5" id="0NJ-ql-PRV"/>
+                <constraint firstItem="pVc-wa-GXP" firstAttribute="top" secondItem="cbX-e3-ol9" secondAttribute="bottom" constant="5" id="5Db-IK-TYF"/>
+                <constraint firstItem="pVc-wa-GXP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9ZE-QJ-6yf"/>
+                <constraint firstItem="dIw-WL-FYA" firstAttribute="bottom" secondItem="cbX-e3-ol9" secondAttribute="bottom" constant="-5" id="EAd-wr-lXm"/>
+                <constraint firstItem="pVc-wa-GXP" firstAttribute="centerY" secondItem="Phj-GY-WQE" secondAttribute="centerY" id="GFW-Ft-0e4"/>
+                <constraint firstItem="cbX-e3-ol9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KXm-aV-MjS"/>
+                <constraint firstItem="BRa-H8-ilz" firstAttribute="bottom" secondItem="cbX-e3-ol9" secondAttribute="bottom" constant="-5" id="fhn-Vb-ZW3"/>
+                <constraint firstItem="BRa-H8-ilz" firstAttribute="leading" secondItem="cbX-e3-ol9" secondAttribute="leading" constant="5" id="lka-VL-NG2"/>
+                <constraint firstAttribute="trailing" secondItem="Phj-GY-WQE" secondAttribute="trailing" constant="5" id="mov-FU-AVs"/>
+                <constraint firstAttribute="trailing" secondItem="cbX-e3-ol9" secondAttribute="trailing" id="nhe-So-2XR"/>
+                <constraint firstItem="Phj-GY-WQE" firstAttribute="leading" secondItem="pVc-wa-GXP" secondAttribute="trailing" constant="5" id="oZY-Mf-YUu"/>
+                <constraint firstAttribute="bottom" secondItem="pVc-wa-GXP" secondAttribute="bottom" constant="10" id="raN-M8-Oa9"/>
+                <constraint firstItem="cbX-e3-ol9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="raq-fY-Ghi"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="270" height="174"/>
+            <point key="canvasLocation" x="91.304347826086968" y="119.86607142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Image_online" width="16" height="16"/>
+        <image name="Img_default" width="172.5" height="103.5"/>
+        <image name="home_live_cate_normal" width="14" height="14"/>
+    </resources>
+</document>

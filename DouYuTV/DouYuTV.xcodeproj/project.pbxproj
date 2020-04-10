@@ -21,6 +21,11 @@
 		32449FAB243B166F00227086 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32449FA9243B166F00227086 /* MainViewController.swift */; };
 		32449FAD243B176600227086 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32449FAC243B176600227086 /* HomeViewController.swift */; };
 		32449FB0243B21D200227086 /* UIBarButtonItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32449FAF243B21D200227086 /* UIBarButtonItem-Extension.swift */; };
+		326FE86F244020EA00CC703B /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326FE86E244020EA00CC703B /* RecommendViewController.swift */; };
+		326FE872244048F600CC703B /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326FE870244048F600CC703B /* CollectionHeaderView.swift */; };
+		326FE873244048F600CC703B /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326FE871244048F600CC703B /* CollectionHeaderView.xib */; };
+		326FE8772440555300CC703B /* CollectionNomalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326FE8752440555300CC703B /* CollectionNomalCell.swift */; };
+		326FE8782440555300CC703B /* CollectionNomalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326FE8762440555300CC703B /* CollectionNomalCell.xib */; };
 		32EA29D0243702D00076A73E /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EA29CF243702D00076A73E /* Home.storyboard */; };
 		32EA29D5243702FD0076A73E /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EA29D2243702FD0076A73E /* Live.storyboard */; };
 		32EA29DA2437030D0076A73E /* Follow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EA29D72437030D0076A73E /* Follow.storyboard */; };
@@ -65,6 +70,11 @@
 		32449FA9243B166F00227086 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		32449FAC243B176600227086 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		32449FAF243B21D200227086 /* UIBarButtonItem-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Extension.swift"; sourceTree = "<group>"; };
+		326FE86E244020EA00CC703B /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		326FE870244048F600CC703B /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
+		326FE871244048F600CC703B /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
+		326FE8752440555300CC703B /* CollectionNomalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionNomalCell.swift; sourceTree = "<group>"; };
+		326FE8762440555300CC703B /* CollectionNomalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionNomalCell.xib; sourceTree = "<group>"; };
 		32EA29CF243702D00076A73E /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		32EA29D2243702FD0076A73E /* Live.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Live.storyboard; sourceTree = "<group>"; };
 		32EA29D72437030D0076A73E /* Follow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Follow.storyboard; sourceTree = "<group>"; };
@@ -168,6 +178,7 @@
 			children = (
 				32449FA7243B166F00227086 /* Main.storyboard */,
 				32110C25243C769E004ED87C /* PageViews */,
+				326FE8742440550A00CC703B /* CollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +198,15 @@
 				321A0797243DD72100958035 /* UIColor-Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		326FE8742440550A00CC703B /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				326FE8752440555300CC703B /* CollectionNomalCell.swift */,
+				326FE8762440555300CC703B /* CollectionNomalCell.xib */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		3287283F2435B19500B4C56E /* Classes */ = {
@@ -265,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				32449FAC243B176600227086 /* HomeViewController.swift */,
+				326FE86E244020EA00CC703B /* RecommendViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -280,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				32EA29CF243702D00076A73E /* Home.storyboard */,
+				326FE870244048F600CC703B /* CollectionHeaderView.swift */,
+				326FE871244048F600CC703B /* CollectionHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,7 +477,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				326FE8782440555300CC703B /* CollectionNomalCell.xib in Resources */,
 				32449FAA243B166F00227086 /* Main.storyboard in Resources */,
+				326FE873244048F600CC703B /* CollectionHeaderView.xib in Resources */,
 				32EA29D0243702D00076A73E /* Home.storyboard in Resources */,
 				321834B8242F36C60013F153 /* LaunchScreen.storyboard in Resources */,
 				321834B5242F36C60013F153 /* Assets.xcassets in Resources */,
@@ -486,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32110C27243C76C7004ED87C /* PageTitleView.swift in Sources */,
+				326FE872244048F600CC703B /* CollectionHeaderView.swift in Sources */,
 				32449FB0243B21D200227086 /* UIBarButtonItem-Extension.swift in Sources */,
 				32449FAB243B166F00227086 /* MainViewController.swift in Sources */,
 				321A0796243DD1CB00958035 /* PageContentView.swift in Sources */,
@@ -494,6 +520,8 @@
 				321834AE242F36C50013F153 /* SceneDelegate.swift in Sources */,
 				32449FAD243B176600227086 /* HomeViewController.swift in Sources */,
 				32110C29243C7C1A004ED87C /* Common.swift in Sources */,
+				326FE86F244020EA00CC703B /* RecommendViewController.swift in Sources */,
+				326FE8772440555300CC703B /* CollectionNomalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

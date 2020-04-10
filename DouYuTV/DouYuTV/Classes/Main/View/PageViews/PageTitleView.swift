@@ -8,12 +8,17 @@
 
 import UIKit
 
+//定义协议
 protocol PageTitleViewDelegate : class {
     func pageTitleView(titleView : PageTitleView, selectIndex index : Int)
 }
 
+//定义常量
 private let kScrollLineH : CGFloat = 2
+private let kNormalColor : (CGFloat, CGFloat, CGFloat) = (85,85,85)
+private let kSelectColor : (CGFloat, CGFloat, CGFloat) = (255,128,0)
 
+//定义类
 class PageTitleView: UIView {
 
     //MARK: - 定义属性
@@ -80,7 +85,7 @@ extension PageTitleView {
             label.text = value
             label.tag = index
             label.font = .systemFont(ofSize: 16.0)
-            label.textColor = .darkGray
+            label.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
             label.textAlignment = .center
             
             //设置label的frame
@@ -110,7 +115,7 @@ extension PageTitleView {
         
         //获取第一个label
         guard let firstLabel = titleLabels.first else {return}
-        firstLabel.textColor = .orange
+        firstLabel.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
         
         //添加scrollLine
         scrollView.addSubview(scrollLine)
@@ -128,8 +133,8 @@ extension PageTitleView {
         let oldLabel = titleLabels[currentIndex]
         
         //切换文字颜色
-        currentLabel.textColor = .orange
-        oldLabel.textColor = .darkGray
+        currentLabel.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
+        oldLabel.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
         
         //保存最新label的下标值
         currentIndex = currentLabel.tag
@@ -148,6 +153,25 @@ extension PageTitleView {
 //暴露的方法
 extension PageTitleView {
     func setTitleWithProgress(progress : CGFloat, sourceIndex : Int, targetIndex : Int) {
+        //取出sourceLabel/targetLabel
+        let sourceLabel = titleLabels[sourceIndex]
+        let targetLabel = titleLabels[targetIndex]
+        
+        //处理滑块的逻辑
+        let moveTotalX = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
+        let moveX = moveTotalX * progress
+        scrollLine.frame.origin.x = sourceLabel.frame.origin.x + moveX
+        
+        //颜色的渐变（复杂）
+        // 1、取出变化的范围
+        let colorDelta = (kSelectColor.0 - kNormalColor.0, kSelectColor.1 - kNormalColor.1, kSelectColor.2 - kNormalColor.2)
+        // 2、变化sourceLabel
+        sourceLabel.textColor = UIColor(r: kSelectColor.0 - colorDelta.0 * progress, g: kSelectColor.1 - colorDelta.1 * progress, b: kSelectColor.2 - colorDelta.2 * progress)
+        // 3、变化targetLabel
+        targetLabel.textColor = UIColor(r: kNormalColor.0 + colorDelta.0 * progress, g: kNormalColor.1 + colorDelta.1 * progress, b: kNormalColor.2 + colorDelta.2 * progress)
+        
+        //记录最新的index
+        currentIndex = targetIndex
         
     }
 }
